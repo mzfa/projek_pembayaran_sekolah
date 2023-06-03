@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi extends CI_Controller
+class Laporan extends CI_Controller
 {
     public function __construct()
     {
@@ -11,7 +11,7 @@ class Transaksi extends CI_Controller
 
     public function index()
     {
-        $data['siswa'] = $this->ModelSiswa->cekData(['status' => null])->result_array();
+        $data['transaksi'] = $this->db->query("SELECT * FROM transaksi LEFT JOIN jenis_pembayaran ON transaksi.jenis_pembayaran_id=jenis_pembayaran.jenis_pembayaran_id LEFT JOIN siswa ON transaksi.siswa_id=siswa.siswa_id")->result_array();
         // $sql="SELECT * FROM siswa";    
         // $query = $this->db->query($sql);
         // $data =  $query->result_array();
@@ -21,7 +21,7 @@ class Transaksi extends CI_Controller
         // die();
 
         $this->load->view('layouts/header');
-        $this->load->view('transaksi/index', $data);
+        $this->load->view('laporan/index', $data);
         $this->load->view('layouts/footer');
     }
 
@@ -29,7 +29,7 @@ class Transaksi extends CI_Controller
         $data['transaksi'] = $this->ModelJenisPembayaran->cekData(['transaksi_id' => $id])->result_array();
         // print_r($data['transaksi']);
         // die();
-        $this->load->view('transaksi/edit', $data);
+        $this->load->view('laporan/edit', $data);
     }
     public function bayar($id,$periode,$jenis){
         $data['siswa'] = $this->ModelSiswa->cekData(['siswa_id' => $id])->result_array();
@@ -38,7 +38,7 @@ class Transaksi extends CI_Controller
         $data['jenis'] = $jenis;
         // print_r($data['transaksi']);
         // die();
-        $this->load->view('transaksi/bayar', $data);
+        $this->load->view('laporan/bayar', $data);
     }
 
     public function simpan_bayaran(){
@@ -66,7 +66,7 @@ class Transaksi extends CI_Controller
         $data['jenis'] = $jenis;
         // print_r($data['transaksi']);
         // die();
-        $this->load->view('transaksi/cetak_bukti', $data);
+        $this->load->view('laporan/cetak_bukti', $data);
     }
 
     public function detail($id){
@@ -74,7 +74,7 @@ class Transaksi extends CI_Controller
         // print_r($data['transaksi']);
         // die();
         $this->load->view('layouts/header');
-        $this->load->view('transaksi/detail', $data);
+        $this->load->view('laporan/detail', $data);
         $this->load->view('layouts/footer');
     }
     
@@ -137,18 +137,18 @@ class Transaksi extends CI_Controller
             $this->load->view('layouts/header', $data);
             $this->load->view('layouts/sidebar', $data);
             $this->load->view('layouts/topbar', $data);
-            $this->load->view('transaksi/ubah-password', $data);
+            $this->load->view('laporan/ubah-password', $data);
             $this->load->view('layouts/footer');
         } else {
             $pwd_skrg = $this->input->post('password_sekarang', true);
             $pwd_baru = $this->input->post('password_baru1', true);
             if (!password_verify($pwd_skrg, $data['transaksi']['password'])) {
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password Saat ini Salah!!! </div>');
-                redirect('transaksi/ubahPassword');
+                redirect('laporan/ubahPassword');
             } else {
                 if ($pwd_skrg == $pwd_baru) {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password Baru tidak boleh sama dengan password saat ini!!! </div>');
-                    redirect('transaksi/ubahPassword');
+                    redirect('laporan/ubahPassword');
                 } else {
                     //password ok
                     $password_hash = password_hash($pwd_baru, PASSWORD_DEFAULT);
@@ -158,7 +158,7 @@ class Transaksi extends CI_Controller
                     $this->db->update('transaksi');
 
                     $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Password Berhasil diubah</div>');
-                    redirect('transaksi/ubahPassword');
+                    redirect('laporan/ubahPassword');
                 }
             }
         }

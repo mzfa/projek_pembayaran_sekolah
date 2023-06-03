@@ -5,25 +5,25 @@ class ModelTransaksi extends CI_Model
 {
     public function simpanData($data = null)
     {
-        $this->db->insert('jenis_pembayaran', $data);
+        $this->db->insert('transaksi', $data);
     }
     public function updateData($data, $where)
     {
-        $this->db->update('jenis_pembayaran', $data, $where);
+        $this->db->update('transaksi', $data, $where);
     }
     public function all()
     {
-        return $this->db->get('jenis_pembayaran');
+        return $this->db->get('transaksi');
     }
     
     public function cekData($where = null)
     {
-        return $this->db->get_where('jenis_pembayaran', $where);
+        return $this->db->get_where('transaksi', $where);
     }
 
     public function getWhere($where = null)
     {
-        return $this->db->get_where('jenis_pembayaran', $where);
+        return $this->db->get_where('transaksi', $where);
     }
 
 

@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Transaksi &nbsp;</h4> 
+                            <h4 class="card-title">Laporan Transaksi &nbsp;</h4> 
                         </div>
                     </div>
                     <div class="card-body">
@@ -16,29 +16,24 @@
                                     <tr class="ligth">
                                         <th>No</th>
                                         <th>Nama Siswa</th>
-                                        <th>Periode Masuk</th>
-                                        <th>No Telp</th>
-                                        <th>Tunggakan Biaya</th>
+                                        <th>Jenis Pembayaran</th>
+                                        <th>Tanggal Pembayaran</th>
+                                        <th>Total Bayar</th>
                                         <th>#</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($siswa as $item) { ?>
+                                    foreach ($transaksi as $item) { ?>
                                         <tr>
                                             <td><?= $no++ ?></td>
                                             <td><?= $item['nama_siswa'] ?></td>
-                                            <td><?= $item['periode_masuk'] ?></td>
-                                            <td><?= $item['no_telp'] ?></td>
-                                            <?php
-                                                $siswa_id = $item['siswa_id'];
-                                                $biaya_masuk = $this->db->query("SELECT * FROM transaksi WHERE siswa_id='$siswa_id' AND jenis_pembayaran_id=1")->result_array();
-                                                $daftar_ulang = $this->db->query("SELECT * FROM transaksi WHERE siswa_id='$siswa_id' AND jenis_pembayaran_id=2")->result_array();
-                                            ?>
-                                            <td><?= 20000 ?></td>
+                                            <td><?= $item['nama_jenis_bayar'] ?></td>
+                                            <td><?= $item['tanggal_transaksi'] ?></td>
+                                            <td>Rp. <?= number_format($item['total_bayar']) ?></td>
                                             <td>
-                                                <a href="<?= base_url('transaksi/detail/'.$item['siswa_id']) ?>" class="btn btn-success">Detail</a>
+                                            <a target="_blank" href="<?= base_url('transaksi/cetak_bukti/'.$item['siswa_id'].'/'.$item['periode_transaksi'].'/'.$item['jenis_pembayaran_id'].'/') ?>" class="btn btn-success">Cetak Bukti</a>
                                             </td>
                                         </tr>
                                     <?php } ?>
