@@ -5,7 +5,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Data Jenis Pembayaran &nbsp;<a href="#" class="btn btn-primary" data-target="#tambah" data-toggle="modal">Tambah</a></h4> 
+                            <h4 class="card-title">Data Jenis Pembayaran &nbsp;
+                                <!-- <a href="#" class="btn btn-primary" data-target="#tambah" data-toggle="modal">Tambah</a> -->
+                            </h4> 
                         </div>
                     </div>
                     <div class="card-body">
@@ -17,7 +19,7 @@
                                         <th>No</th>
                                         <th>Jenis Pembayaran</th>
                                         <th>Keterangan</th>
-                                        <th>#</th>
+                                        <!-- <th>#</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -28,12 +30,12 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $item['nama_jenis_bayar'] ?></td>
                                             <td><?= $item['keterangan'] ?></td>
-                                            <td>
+                                            <!-- <td>
                                                 <?php if($item['jenis_pembayaran_id'] > 3) { ?>
                                                 <a href="#" onclick="return edit(<?= $item['jenis_pembayaran_id'] ?>)" class="btn btn-warning">Ubah</a>
                                                 <a href="<?= base_url('jenispembayaran/hapus/'.$item['jenis_pembayaran_id']) ?>" class="btn btn-danger">Hapus</a>
                                                 <?php } ?>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                     <?php } ?>
                                 </tbody>

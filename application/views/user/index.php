@@ -30,7 +30,7 @@
                                             <td><?= $item['role'] ?></td>
                                             <td>
                                                 <a href="#" onclick="return edit(<?= $item['user_id'] ?>)" class="btn btn-warning">Ubah</a>
-                                                <a href="" class="btn btn-danger">Hapus</a>
+                                                <a onclick="return confirm('Yakin ingin dihapus?')" href="<?= base_url('user/hapus/'.$item['user_id']) ?>" class="btn btn-danger">Hapus</a>
                                             </td>
                                         </tr>
                                     <?php } ?>

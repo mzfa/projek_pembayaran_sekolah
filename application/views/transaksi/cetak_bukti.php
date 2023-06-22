@@ -80,10 +80,12 @@
                                                         <table class="invoice">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th colspan="2"><?= $siswa[0]['nama_siswa'] ?></th>
+                                                                    <td>Nama Siswa</td>
+                                                                    <th>: <?= strtoupper($siswa[0]['nama_siswa']) ?></th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="2">Periode Masuk : <?= $siswa[0]['periode_masuk'] ?></th>
+                                                                    <td>Periode Masuk </td>
+                                                                    <th>: <?= $siswa[0]['periode_masuk'] ?></th>
                                                                 </tr>
                                                                 <tr>
                                                                     <td colspan="2">
@@ -442,7 +444,7 @@
     </style>
 
     <script type="text/javascript">
-
+        window.print();
     </script>
 
 </body>

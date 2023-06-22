@@ -80,7 +80,7 @@
                                                         <table class="invoice">
                                                             <tbody>
                                                                 <tr>
-                                                                    <th colspan="2"><?= $siswa[0]['nama_siswa'] ?></th>
+                                                                    <th colspan="2">Nama Siswa : <?= uppercase($siswa[0]['nama_siswa']) ?></th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="2">Periode Masuk : <?= $siswa[0]['periode_masuk'] ?></th>

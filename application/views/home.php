@@ -9,7 +9,7 @@
                                     <h5>Uang Masuk</h5>
                                     <span class="badge badge-primary">Hari Ini</span>
                                 </div>
-                                <h3>Rp. <span class="counter"><?= number_format(35000) ?></span></h3>
+                                <h3>Rp. <span class="counter"><?= number_format($hari_ini[0]['total']) ?></span></h3>
                             </div>
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                                     <h5>Uang Masuk</h5>
                                     <span class="badge badge-info">Bulan ini</span>
                                 </div>
-                                <h3>Rp. <span class="counter">2500</span></h3>
+                                <h3>Rp. <span class="counter"><?= number_format($bulan_ini[0]['total']) ?></span></h3>
                             </div>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                     <h5>User</h5>
                                     <span class="badge badge-warning">Total User</span>
                                 </div>
-                                <h3><span class="counter">25100</span></h3>
+                                <h3><span class="counter"><?= number_format($user[0]['total']) ?></span></h3>
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                                     <h5>Siswa</h5>
                                     <span class="badge badge-success">Total Siswa</span>
                                 </div>
-                                <h3><span class="counter">33000</span></h3>
+                                <h3><span class="counter"><?= number_format($siswa[0]['total']) ?></span></h3>
                             </div>
                         </div>
                     </div>

@@ -68,6 +68,11 @@ class User extends CI_Controller
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! User berhasil diubah.</div>');
         redirect(base_url('user'));
     }
+    public function hapus($id){
+        $this->db->delete('user', ['user_id' => $id]);
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Selamat!! Data berhasil dihapus.</div>');
+        redirect(base_url('user'));
+    }
 
     public function ubahPassword()
     {
